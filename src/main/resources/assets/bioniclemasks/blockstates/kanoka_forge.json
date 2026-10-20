@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bioniclemasks:block/kanoka_forge"
+    },
+    "facing=east": {
+      "model": "bioniclemasks:block/kanoka_forge",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bioniclemasks:block/kanoka_forge",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bioniclemasks:block/kanoka_forge",
+      "y": 270
+    }
+  }
+}

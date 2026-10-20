@@ -1,0 +1,153 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "bioniclemasks:item/kanohi/kraahkan",
+        "tints": [
+          {
+            "type": "minecraft:dye",
+            "default": -1
+          }
+        ]
+      },
+      {
+        "type": "minecraft:select",
+        "property": "minecraft:custom_model_data",
+        "index": 0,
+        "cases": [
+          {
+            "when": "flame",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_flame",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "wave",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_wave",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "swirl",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_swirl",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "rock",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_rock",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "frost",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_frost",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "spark",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_spark",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "shadow",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_shadow",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "leaf",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_leaf",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          },
+          {
+            "when": "crystal",
+            "model": {
+              "type": "minecraft:model",
+              "model": "bioniclemasks:item/kanohi/overlay/kraahkan_crystal",
+              "tints": [
+                {
+                  "type": "minecraft:custom_model_data",
+                  "index": 0,
+                  "default": -1
+                }
+              ]
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
+  }
+}

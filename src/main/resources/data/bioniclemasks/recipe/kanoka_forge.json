@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "SAS",
+    "SSS"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:stone_bricks",
+    "A": "minecraft:anvil"
+  },
+  "result": {
+    "id": "bioniclemasks:kanoka_forge"
+  }
+}

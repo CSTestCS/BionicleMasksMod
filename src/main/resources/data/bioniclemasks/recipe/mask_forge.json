@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BIB",
+    "BFB",
+    "BLB"
+  ],
+  "key": {
+    "B": "minecraft:bricks",
+    "I": "minecraft:iron_ingot",
+    "F": "minecraft:blast_furnace",
+    "L": "minecraft:lava_bucket"
+  },
+  "result": {
+    "id": "bioniclemasks:mask_forge"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bioniclemasks:item/kanoka/disk_of_time",
+    "layer1": "bioniclemasks:item/kanoka/symbol/time"
+  }
+}

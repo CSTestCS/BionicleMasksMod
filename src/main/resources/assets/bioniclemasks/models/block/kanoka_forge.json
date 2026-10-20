@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "bioniclemasks:block/kanoka_forge_top",
+    "side": "bioniclemasks:block/kanoka_forge_side",
+    "front": "bioniclemasks:block/kanoka_forge_front"
+  }
+}

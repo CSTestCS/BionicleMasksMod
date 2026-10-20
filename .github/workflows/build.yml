@@ -1,0 +1,42 @@
+name: Build mod jar
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Check lore rules (no Minecraft needed)
+        run: ./tools/check_lore.sh
+
+      - name: Find the newest NeoForge build for Minecraft 26.3
+        id: neo
+        run: |
+          version=$(curl -fsSL https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml \
+            | grep -oE '<version>26\.3\.[0-9.]+(-beta)?</version>' | sed -E 's#</?version>##g' | sort -V | tail -1)
+          echo "Using NeoForge $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: ./gradlew build -Pneo_version=${{ steps.neo.outputs.version }} --stacktrace --no-configuration-cache
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bioniclemasks-jar
+          path: build/libs/*.jar
+          if-no-files-found: error
