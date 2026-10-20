@@ -37,7 +37,7 @@ final class ForgeMenus {
         if (stack.isEmpty()) {
             container.setItem(slot, remainder);
         } else if (!remainder.isEmpty() && !player.getInventory().add(remainder)) {
-            player.drop(remainder, false);
+            player.level().addFreshEntity(new net.minecraft.world.entity.item.ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), remainder));
         }
         container.setChanged();
     }

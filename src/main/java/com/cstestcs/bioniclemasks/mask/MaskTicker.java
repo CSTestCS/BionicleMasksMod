@@ -191,7 +191,7 @@ public final class MaskTicker {
                 for (ItemEntity item : level.getEntitiesOfClass(ItemEntity.class, p.getBoundingBox().inflate(6 + 3 * boost))) {
                     Vec3 pull = p.position().subtract(item.position()).normalize().scale(0.45);
                     item.setDeltaMovement(pull);
-                    item.hurtMarked = true;
+                    item.syncVelocity = true;
                 }
             }
             case PLANT_LIFE -> {

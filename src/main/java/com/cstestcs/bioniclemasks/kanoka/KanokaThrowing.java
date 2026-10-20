@@ -98,7 +98,7 @@ public final class KanokaThrowing {
                     Vec3 aim = thrower.getEyePosition().add(thrower.getLookAngle().scale(thrower.distanceTo(entity) + 4));
                     Vec3 wanted = aim.subtract(entity.position()).normalize().scale(entity.getDeltaMovement().length());
                     entity.setDeltaMovement(entity.getDeltaMovement().lerp(wanted, 0.15));
-                    entity.hurtMarked = true;
+                    entity.syncVelocity = true;
                 }
             }
             case PO -> {
@@ -106,7 +106,7 @@ public final class KanokaThrowing {
                 for (Projectile other : level.getEntitiesOfClass(Projectile.class, entity.getBoundingBox().inflate(1.5),
                         p -> p != entity && p.getOwner() != owner)) {
                     other.setDeltaMovement(other.getDeltaMovement().scale(-0.6));
-                    other.hurtMarked = true;
+                    other.syncVelocity = true;
                 }
             }
             case LE -> {
@@ -164,7 +164,7 @@ public final class KanokaThrowing {
                 flight.passes++;
                 Vec3 v = projectile.getDeltaMovement();
                 projectile.setDeltaMovement(v.x, Math.abs(v.y) + 0.35, v.z);
-                projectile.hurtMarked = true;
+                projectile.syncVelocity = true;
                 return;
             }
             // Bouncing disks ricochet once.
@@ -178,7 +178,7 @@ public final class KanokaThrowing {
                     case Z -> new Vec3(v.x, v.y, -v.z);
                 };
                 projectile.setDeltaMovement(bounced.scale(0.75));
-                projectile.hurtMarked = true;
+                projectile.syncVelocity = true;
                 return;
             }
         } else if (hit instanceof EntityHitResult entityHit) {
@@ -191,7 +191,7 @@ public final class KanokaThrowing {
                 if (data.material() == DiskMaterial.STONE || data.has(DiskTrait.HEAVY)) {
                     Vec3 push = projectile.getDeltaMovement().normalize().scale(0.6);
                     living.push(push.x, 0.2, push.z);
-                    living.hurtMarked = true;
+                    living.syncVelocity = true;
                 }
                 living.hurtServer(level, level.damageSources().thrown(projectile, owner), damage);
             }
@@ -227,7 +227,7 @@ public final class KanokaThrowing {
         if (data.metru() == Metru.ONU && projectile.getOwner() instanceof Player thrower && thrower.isAlive()
                 && thrower.level() == level && thrower.distanceTo(projectile) < 96) {
             if (!thrower.getInventory().add(back)) {
-                thrower.drop(back, false);
+                level.addFreshEntity(new ItemEntity(level, thrower.getX(), thrower.getY(), thrower.getZ(), back));
             }
             return;
         }

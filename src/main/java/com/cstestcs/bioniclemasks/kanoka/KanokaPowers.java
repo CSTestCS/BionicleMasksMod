@@ -255,7 +255,7 @@ public final class KanokaPowers {
         }
         for (Projectile p : level.getEntitiesOfClass(Projectile.class, new AABB(at, at).inflate(8))) {
             p.setDeltaMovement(p.getDeltaMovement().scale(0.05));
-            p.hurtMarked = true;
+            p.syncVelocity = true;
         }
         level.sendParticles(ParticleTypes.END_ROD, at.x, at.y, at.z, 80, 3, 2, 3, 0.02);
     }
@@ -265,7 +265,7 @@ public final class KanokaPowers {
         for (Entity e : level.getEntitiesOfClass(Entity.class, new AABB(at, at).inflate(3.5), e -> e != owner)) {
             Vec3 push = e.position().subtract(at).normalize().scale(strength).add(0, 0.35, 0);
             e.push(push.x, push.y, push.z);
-            e.hurtMarked = true;
+            e.syncVelocity = true;
         }
         level.sendParticles(ParticleTypes.GUST, at.x, at.y, at.z, 1, 0, 0, 0, 0);
         level.playSound(null, at.x, at.y, at.z, SoundEvents.WIND_CHARGE_BURST, SoundSource.PLAYERS, 1.0F, 1.0F);

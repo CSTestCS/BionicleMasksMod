@@ -556,7 +556,7 @@ public final class MaskPowers {
                     }
                     for (Projectile proj : level.getEntitiesOfClass(Projectile.class, p.getBoundingBox().inflate(ctx.radius(14)), e -> e.getOwner() != p)) {
                         proj.setDeltaMovement(proj.getDeltaMovement().scale(0.05));
-                        proj.hurtMarked = true;
+                        proj.syncVelocity = true;
                     }
                     particles(level, ParticleTypes.END_ROD, p.position().add(0, 1, 0), 80, 5);
                     tell(p, "Time slows to a crawl.", 0xFFD45A);
@@ -665,7 +665,7 @@ public final class MaskPowers {
         int a = Math.min(2, ctx.amp());
         EntityType<?> type = nearest.getType();
         String gift;
-        if (nearest.getType().is(com.cstestcs.bioniclemasks.kanoka.Tags.entity("aquatic"))) {
+        if (nearest.is(com.cstestcs.bioniclemasks.kanoka.Tags.entity("aquatic"))) {
             p.addEffect(effect(MobEffects.WATER_BREATHING, t, 0));
             p.addEffect(effect(MobEffects.DOLPHINS_GRACE, t, 0));
             gift = "gills and fins";
@@ -920,7 +920,7 @@ public final class MaskPowers {
     }
 
     static boolean undead(LivingEntity e) {
-        return e.getType().is(com.cstestcs.bioniclemasks.kanoka.Tags.entity("undead"));
+        return e.is(com.cstestcs.bioniclemasks.kanoka.Tags.entity("undead"));
     }
 
     private static List<LivingEntity> livingAround(MaskContext ctx, double baseRadius) {
@@ -939,7 +939,7 @@ public final class MaskPowers {
 
     private static void launch(Entity e, Vec3 velocity) {
         e.setDeltaMovement(velocity);
-        e.hurtMarked = true;
+        e.syncVelocity = true;
     }
 
     private static void beam(ServerLevel level, Vec3 from, Vec3 to, ParticleOptions particle) {

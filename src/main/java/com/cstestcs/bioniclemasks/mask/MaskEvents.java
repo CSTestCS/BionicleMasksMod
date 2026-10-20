@@ -145,7 +145,7 @@ public final class MaskEvents {
         if (data.has(DiskTrait.GALE) && attacker != null && attacker != wearer) {
             Vec3 push = attacker.position().subtract(wearer.position()).normalize().scale(1.0);
             attacker.push(push.x, 0.3, push.z);
-            attacker.hurtMarked = true;
+            attacker.syncVelocity = true;
         }
     }
 
@@ -165,7 +165,7 @@ public final class MaskEvents {
             case AIR -> {
                 Vec3 push = victim.position().subtract(p.position()).normalize().scale(0.8 * k);
                 victim.push(push.x, 0.3, push.z);
-                victim.hurtMarked = true;
+                victim.syncVelocity = true;
             }
             case ICE -> {
                 victim.addEffect(effect(MobEffects.SLOWNESS, 60, k - 1));
@@ -287,9 +287,9 @@ public final class MaskEvents {
     }
 
     private static void effectEnded(LivingEntity entity, MobEffectInstance instance) {
-        if (instance.getEffect().is(ModEffects.SILENCED.getKey())) {
+        if (instance.getEffect().value() == ModEffects.SILENCED.get()) {
             entity.setSilent(false);
-        } else if (instance.getEffect().is(ModEffects.RECONSTITUTED.getKey())) {
+        } else if (instance.getEffect().value() == ModEffects.RECONSTITUTED.get()) {
             ReconstitutedEffect.restore(entity);
         }
     }
